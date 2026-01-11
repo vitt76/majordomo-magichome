@@ -383,11 +383,11 @@ $enable=$cmd_rec['VALUE'];
 
 $enable=1;
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM magichome_config where parametr='EVERY'");
-$every=$cmd_rec['VALUE'];
+$every = isset($cmd_rec['VALUE']) ? (int)$cmd_rec['VALUE'] : 60;
 
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM magichome_config where parametr='LASTCYCLE_TS'");
-$latest=$cmd_rec['VALUE'];
+$latest = isset($cmd_rec['VALUE']) ? (int)$cmd_rec['VALUE'] : 0;
 
    $tdev = time()-$latest;
    $has = $tdev>$every*60;
